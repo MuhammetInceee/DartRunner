@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace _Scripts
+namespace MuhammetInce.Helpers
 {
-    public class HelperUtils : MonoBehaviour
+    public static class HelperUtils
     {
         
     }
