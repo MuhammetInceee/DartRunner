@@ -554,9 +554,9 @@ GameObject:
   - component: {fileID: 1858538196}
   - component: {fileID: 1858538194}
   - component: {fileID: 1858538195}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -653,6 +653,8 @@ MonoBehaviour:
   horizontalSpeed: 1
   leftSideBorder: -3.4
   rightSideBorder: 4.1
+  rightLeftRotateAngle: 10
+  rightLeftRotateDuration: 0.5
 --- !u!114 &1858538195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,6 +674,7 @@ MonoBehaviour:
   yellowMat: {fileID: 2100000, guid: 372b2e90f49e9b54db3a5b466846ac8d, type: 2}
   greenMat: {fileID: 2100000, guid: 2cdf47fc7b0330340ad932366e72eeb2, type: 2}
   rotateSide: 0
+  score: 0
 --- !u!54 &1858538196
 Rigidbody:
   m_ObjectHideFlags: 0
