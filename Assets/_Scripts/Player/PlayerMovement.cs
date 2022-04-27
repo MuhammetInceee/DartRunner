@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,7 +14,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Borders"), Space] 
     [SerializeField] private float leftSideBorder;
     [SerializeField] private float rightSideBorder;
-    
+
+    [Header("Player Rotate"), Space] 
+    [SerializeField] private float rightLeftRotateAngle;
+    [SerializeField] private float rightLeftRotateDuration;
+
     private Vector3 Pos
     {
         get => transform.position;
@@ -30,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         VerticalMovement();
         HorizontalMovement();
         BorderMovement();
+        
     }
 
     private void VerticalMovement()
@@ -45,6 +52,16 @@ public class PlayerMovement : MonoBehaviour
         if (Touch.phase == TouchPhase.Moved)
         {
             Pos = new Vector3(Pos.x + Touch.deltaPosition.x * (horizontalSpeed * Time.deltaTime), Pos.y, Pos.z);
+            if (Touch.deltaPosition.x > 0) // right
+                // transform.rotation = Quaternion.Euler(0, 20, 0);
+                transform.DORotate( new Vector3(0, rightLeftRotateAngle, 0), rightLeftRotateDuration);
+            else
+                transform.DORotate( new Vector3(0, -rightLeftRotateAngle, 0), rightLeftRotateDuration);
+        }
+
+        if (Touch.phase == TouchPhase.Ended)
+        {
+            transform.DORotate(Vector3.zero, rightLeftRotateDuration);
         }
     }
 
