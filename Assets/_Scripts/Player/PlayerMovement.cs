@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Borders"), Space] 
     [SerializeField] private float leftSideBorder;
     [SerializeField] private float rightSideBorder;
-
+    
     private Vector3 Pos
     {
         get => transform.position;
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateInit()
     {
         VerticalMovement();
-        HorizontalSpeed();
+        HorizontalMovement();
         BorderMovement();
     }
 
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(0,0, verticalSpeed * Time.deltaTime);
     }
 
-    private void HorizontalSpeed()
+    private void HorizontalMovement()
     {
         if (Input.touchCount <= 0) return;
         
