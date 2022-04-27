@@ -17,6 +17,9 @@ public class PlayerCollision : MonoBehaviour
     [Header("Booleans"), Space] 
     [SerializeField] private bool rotateSide;
 
+    [Header("Scores"), Space] 
+    [SerializeField] private int score;
+
 
     // Properties
     private Renderer PlayerRenderer => GetComponent<Renderer>();
@@ -62,6 +65,8 @@ public class PlayerCollision : MonoBehaviour
         {
             // TODO
             // Balloon Burst with Shader
+            // Score Added
+            
         }
         else
         {
