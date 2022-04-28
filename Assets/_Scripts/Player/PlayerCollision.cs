@@ -1,28 +1,39 @@
 using System;
+using System.Runtime.Remoting.Messaging;
 using MuhammetInce.Helpers;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    [Header("Floats"), Space] 
+    private bool _rotateSide;
+    private PlayerMovement _playerMovement;
+    
+    [Header("Floats")] 
     [SerializeField] private float rotateAroundDuration;
-
+    [SerializeField] private float destroyedBonusBalloon;
+    
+    [Header("Player Speed"),Space]
+    [SerializeField] private float increaseSpeedBoost;
+    [SerializeField] private float decreaseSpeedBoost;
+    [SerializeField] private float minVerSpeed;
+    
     [Header("Material"), Space] 
     [SerializeField] private Material balloonHoloMat;
     [SerializeField] private Material redMat;
     [SerializeField] private Material blueMat;
     [SerializeField] private Material yellowMat;
     [SerializeField] private Material greenMat;
-
-    [Header("Booleans"), Space] 
-    [SerializeField] private bool rotateSide;
-
+    
     [Header("Scores"), Space] 
-    [SerializeField] private int score;
-
+    public int score;
 
     // Properties
     private Renderer PlayerRenderer => GetComponent<Renderer>();
+    private float PlayerVerticalSpeed
+    {
+        get => _playerMovement.verticalSpeed;
+        set => _playerMovement.verticalSpeed = value;
+    }
 
     private Material PlayerMat
     {
@@ -30,6 +41,16 @@ public class PlayerCollision : MonoBehaviour
         set => PlayerRenderer.material = value;
     }
 
+    private void Awake()
+    {
+        AwakeInit();
+    }
+
+    private void AwakeInit()
+    {
+        if(_playerMovement != null) return;
+        _playerMovement = gameObject.GetComponent<PlayerMovement>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -40,20 +61,23 @@ public class PlayerCollision : MonoBehaviour
             case "Balloon":
                 BalloonBurstChecker(other);
                 break;
+            case "BonusBalloon":
+                BonusBalloon();
+                break;
         }
     }
 
     private void ColorChangeChecker(Collider other)
     {
-        if (rotateSide)
+        if (_rotateSide)
         {
             HelperUtils.RotateAround(gameObject, rotateAroundDuration, 1);
-            rotateSide = false;
+            _rotateSide = false;
         }
         else
         {
             HelperUtils.RotateAround(gameObject, rotateAroundDuration, -1);
-            rotateSide = true;
+            _rotateSide = true;
         }
         gameObject.layer = other.gameObject.layer;
         PlayerMatChanger();
@@ -64,9 +88,9 @@ public class PlayerCollision : MonoBehaviour
         if (gameObject.layer == other.gameObject.layer)
         {
             // TODO
-            // Balloon Burst with Shader
-            // Score Added
-            
+            // other.GetComponent<MeshRenderer>().material.SetVector("CutOff Height", new Vector4(3,0,0,0));
+            score++;
+            PlayerVerticalSpeed += increaseSpeedBoost;
         }
         else
         {
@@ -91,5 +115,15 @@ public class PlayerCollision : MonoBehaviour
                 PlayerMat = greenMat;
                 break;
         }
+    }
+
+    private void BonusBalloon()
+    {
+        PlayerVerticalSpeed -= decreaseSpeedBoost;
+        
+        if (PlayerVerticalSpeed <= minVerSpeed)
+            _playerMovement.enabled = false;
+
+        destroyedBonusBalloon++;
     }
 }
