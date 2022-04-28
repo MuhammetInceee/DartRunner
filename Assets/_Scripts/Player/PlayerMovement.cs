@@ -7,8 +7,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Player Speeds"), Space]
-    [SerializeField] private float verticalSpeed;
+
+    [Header("Player Speeds")]
+    public float verticalSpeed;
     [SerializeField] private float horizontalSpeed;
 
     [Header("Borders"), Space] 
@@ -24,24 +25,24 @@ public class PlayerMovement : MonoBehaviour
         get => transform.position;
         set => transform.position = value;
     }
-
-    public Touch Touch => Input.GetTouch(0);
+    private static Touch Touch => Input.GetTouch(0);
+    
     private void Update()
     {
         UpdateInit();
     }
-
+    
     private void UpdateInit()
     {
         VerticalMovement();
         HorizontalMovement();
         BorderMovement();
-        
+        print("verticalSpeed : " + verticalSpeed);
     }
 
     private void VerticalMovement()
     {
-        transform.Translate(0,0, verticalSpeed * Time.deltaTime);
+        transform.Translate(0,0, (verticalSpeed * Time.deltaTime));
     }
 
     private void HorizontalMovement()
@@ -52,11 +53,11 @@ public class PlayerMovement : MonoBehaviour
         if (Touch.phase == TouchPhase.Moved)
         {
             Pos = new Vector3(Pos.x + Touch.deltaPosition.x * (horizontalSpeed * Time.deltaTime), Pos.y, Pos.z);
-            if (Touch.deltaPosition.x > 0) // right
-                // transform.rotation = Quaternion.Euler(0, 20, 0);
-                transform.DORotate( new Vector3(0, rightLeftRotateAngle, 0), rightLeftRotateDuration);
-            else
-                transform.DORotate( new Vector3(0, -rightLeftRotateAngle, 0), rightLeftRotateDuration);
+            
+            transform.DORotate(
+                Touch.deltaPosition.x > 0
+                    ? new Vector3(0, rightLeftRotateAngle, 0)
+                    : new Vector3(0, -rightLeftRotateAngle, 0), rightLeftRotateDuration);
         }
 
         if (Touch.phase == TouchPhase.Ended)
