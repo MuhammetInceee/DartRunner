@@ -1390,9 +1390,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -665.9999389648438,
-            "y": 1160.0,
-            "width": 104.0,
+            "x": -648.0000610351563,
+            "y": 1149.0001220703125,
+            "width": 104.00000762939453,
             "height": 149.0
         }
     },
@@ -1713,7 +1713,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 2
+    "m_Space": 0
 }
 
 {
@@ -1808,7 +1808,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "848a1b632f7841f89269447ff90449c9",
     "m_Id": 0,
-    "m_DisplayName": "CutOff Height (1)",
+    "m_DisplayName": "CutOff Height",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2218,7 +2218,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Smoothness",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
+    "m_Value": 0.0,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
@@ -2425,7 +2425,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AlphaClipThreshold",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
+    "m_Value": 0.6600000262260437,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
