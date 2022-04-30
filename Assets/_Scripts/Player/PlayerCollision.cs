@@ -88,7 +88,7 @@ public class PlayerCollision : MonoBehaviour
         if (gameObject.layer == other.gameObject.layer)
         {
             // TODO
-            // other.GetComponent<MeshRenderer>().material.SetVector("CutOff Height", new Vector4(3,0,0,0));
+            other.gameObject.GetComponent<Animator>().SetBool("isBurst", true);
             score++;
             PlayerVerticalSpeed += increaseSpeedBoost;
         }
