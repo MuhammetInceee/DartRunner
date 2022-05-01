@@ -3,13 +3,33 @@
   <component name="ChangeListManager">
     <list default="true" id="cf3857a7-0213-47ca-8802-ad4b4e796a0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DartRunner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DartRunner/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Kerem/New Material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/New Shader Graph.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Kerem/New Shader Graph.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/Shader.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Kerem/Shader.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/MuhammetInceScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/MuhammetInceScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Blue_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Blue_Mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/HoloMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/HoloMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Ballon.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Ballon.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Balloon1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Balloon1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Balloon2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Balloon2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Dart.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Models/Dart.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/Ballon.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/Ballon.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/Balloon1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/Balloon1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/Balloon2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/Balloon2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/New Material.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/New Material.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/New Shader Graph.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/New Shader Graph.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/Shader.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Kerem/Shader.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/LevelDesign.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/LevelDesign.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/HelperUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/HelperUtils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerCollision.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +95,7 @@
       <workItem from="1650966213040" duration="9372000" />
       <workItem from="1650982868376" duration="7650000" />
       <workItem from="1651135007165" duration="10250000" />
+      <workItem from="1651393432537" duration="4532000" />
     </task>
     <servers />
   </component>
