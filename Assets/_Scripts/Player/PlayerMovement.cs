@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
         VerticalMovement();
         HorizontalMovement();
         BorderMovement();
-        print("verticalSpeed : " + verticalSpeed);
     }
 
     private void VerticalMovement()
