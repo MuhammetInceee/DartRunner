@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2785508670889823283}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.53, z: 0.7099991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -63,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1332897886726994124, guid: 4ad01eb5e602eaf4798ddd586a02075f, type: 3}
-  - {fileID: -149854200569039556, guid: 4ad01eb5e602eaf4798ddd586a02075f, type: 3}
+  - {fileID: 2100000, guid: be8d36b02472db1448285dbef12232f2, type: 2}
+  - {fileID: 2100000, guid: 043670bd65b87854588a875f7f858736, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,8 +113,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.32815364, y: 0.3281364, z: 1.8952072}
-  m_Center: {x: 0, y: 0, z: -0.000000059604645}
+  m_Size: {x: 0.03061831, y: 0.030096173, z: 0.020651579}
+  m_Center: {x: -0.0019588377, y: 0.0015847087, z: 0.9372777}
 --- !u!114 &3056102127481735689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,11 +132,12 @@ MonoBehaviour:
   increaseSpeedBoost: 0.1
   decreaseSpeedBoost: 0.2
   minVerSpeed: 4
-  balloonHoloMat: {fileID: 2100000, guid: bfd43ae7fbf21654d9915456f6911442, type: 2}
-  redMat: {fileID: 2100000, guid: bded3f0e3bb8328438f7ad9474a4267c, type: 2}
-  blueMat: {fileID: 2100000, guid: 16fc93a026e4bad4c9c10b58f4c1d6e7, type: 2}
-  yellowMat: {fileID: 2100000, guid: 372b2e90f49e9b54db3a5b466846ac8d, type: 2}
-  greenMat: {fileID: 2100000, guid: 2cdf47fc7b0330340ad932366e72eeb2, type: 2}
+  playerChangeMat: {fileID: 2100000, guid: 043670bd65b87854588a875f7f858736, type: 2}
+  defaultColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 0}
+  redColor: {r: 1, g: 0, b: 0, a: 0}
+  blueColor: {r: 0.026666641, g: 0, b: 1, a: 0}
+  greenColor: {r: 0.30111146, g: 1, b: 0, a: 0}
+  yellowColor: {r: 1, g: 0.8938142, b: 0, a: 0}
   score: 0
 --- !u!114 &3056102127481735688
 MonoBehaviour:
@@ -154,5 +155,5 @@ MonoBehaviour:
   horizontalSpeed: 0.35
   leftSideBorder: -1.3
   rightSideBorder: 1.5
-  rightLeftRotateAngle: 8
+  rightLeftRotateAngle: 4
   rightLeftRotateDuration: 0.4
