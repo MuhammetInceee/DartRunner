@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2633487526693173842}
   - component: {fileID: 2633487526693173843}
   - component: {fileID: 457493734185652997}
-  m_Layer: 7
-  m_Name: Yellow_Gate 1
+  m_Layer: 8
+  m_Name: Yellow_Gate
   m_TagString: ColorChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -90,7 +90,6 @@ public class PlayerCollision : MonoBehaviour
 
         if (gameObject.layer == other.gameObject.layer)
         {
-            if (!balloonEffect.activeInHierarchy && balloonEffect.activeInHierarchy) return;
             balloonEffect.SetActive(true);
             balloonModel.SetActive(false);
 
