@@ -60,7 +60,7 @@ public class PlayerCollision : MonoBehaviour
                 BalloonBurstChecker(other);
                 break;
             case "BonusBalloon":
-                BonusBalloon();
+                BonusBalloon(other);
                 break;
         }
     }
@@ -115,9 +115,14 @@ public class PlayerCollision : MonoBehaviour
         };
     }
 
-    private void BonusBalloon()
+    private void BonusBalloon(Collider other)
     {
         PlayerVerticalSpeed -= decreaseSpeedBoost;
+        var balloonModel = other.gameObject.transform.GetChild(0).gameObject;
+        var balloonEffect = other.gameObject.transform.GetChild(2).gameObject;
+        
+        balloonEffect.SetActive(true);
+        balloonModel.SetActive(false);
 
         if (PlayerVerticalSpeed <= minVerSpeed)
             _playerMovement.enabled = false;
