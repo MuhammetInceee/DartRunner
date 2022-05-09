@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 using System.Runtime.Remoting.Messaging;
 using MuhammetInce.Helpers;
 using UnityEngine;
@@ -29,6 +30,9 @@ public class PlayerCollision : MonoBehaviour
 
     [Header("Scores"), Space] 
     public int score;
+
+    [Header("Canvases"), Space] 
+    [SerializeField] private GameObject levelEndCanvas;
 
     // Properties
     private float PlayerVerticalSpeed
@@ -125,7 +129,11 @@ public class PlayerCollision : MonoBehaviour
         balloonModel.SetActive(false);
 
         if (PlayerVerticalSpeed <= minVerSpeed)
+        {
             _playerMovement.enabled = false;
+            levelEndCanvas.SetActive(true);
+        }
+            
 
         destroyedBonusBalloon++;
     }
