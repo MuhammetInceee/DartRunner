@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf3857a7-0213-47ca-8802-ad4b4e796a0d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Balloon_Materials/HoloMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Balloon_Materials/HoloMat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Models/Dart_Mat/Dart_Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Models/Dart_Mat/Dart_Red.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Prefabs/Balloons/Ballon_Blue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Prefabs/Balloons/Ballon_Blue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Prefabs/Balloons/Ballon_Green.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Prefabs/Balloons/Ballon_Green.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Prefabs/Balloons/Ballon_Red.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Prefabs/Balloons/Ballon_Red.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Prefabs/Balloons/Ballon_Yellow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Prefabs/Balloons/Ballon_Yellow.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Level3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Level3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PackageAsset/JMO Assets/Toony Colors Pro/Demo TCP2/Cat Demo URP.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerCollision.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +71,7 @@
       <workItem from="1651393432537" duration="4532000" />
       <workItem from="1651837697370" duration="241000" />
       <workItem from="1651850535054" duration="630000" />
+      <workItem from="1652093051830" duration="809000" />
     </task>
     <servers />
   </component>
