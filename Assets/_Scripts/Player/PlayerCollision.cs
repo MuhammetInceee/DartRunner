@@ -46,15 +46,9 @@ public class PlayerCollision : MonoBehaviour
         set => _playerMovement.verticalSpeed = value;
     }
 
-    private void Awake()
-    {
-        AwakeInit();
-    }
+    private void Awake() => AwakeInit();
 
-    private void Update()
-    {
-        UpdateInit();
-    }
+    private void Update() => UpdateInit();
 
     private void AwakeInit()
     {
@@ -80,6 +74,9 @@ public class PlayerCollision : MonoBehaviour
                 break;
             case "BonusBalloon":
                 BonusBalloon(other);
+                break;
+            case "Obstacle":
+                Obstacle(other);
                 break;
         }
     }
@@ -151,10 +148,15 @@ public class PlayerCollision : MonoBehaviour
             _playerMovement.enabled = false;
             levelEndCanvas.SetActive(true);
         }
-
-
+        
         destroyedBonusBalloon++;
     }
+
+    private void Obstacle(Collider other)
+    {
+        
+    }
+    
     private void TapToStart()
     {
         if (_tapToStart.activeInHierarchy)
