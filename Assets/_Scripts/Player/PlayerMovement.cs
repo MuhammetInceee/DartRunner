@@ -20,13 +20,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rightLeftRotateAngle;
     [SerializeField] private float rightLeftRotateDuration;
 
+
+
     private Vector3 Pos
     {
         get => transform.position;
         set => transform.position = value;
     }
     private static Touch Touch => Input.GetTouch(0);
-    
+
     private void Update()
     {
         UpdateInit();
@@ -73,4 +75,6 @@ public class PlayerMovement : MonoBehaviour
         if (Pos.x > rightSideBorder)
             Pos = new Vector3(rightSideBorder, Pos.y, Pos.z);
     }
+
+
 }
