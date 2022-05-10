@@ -7,8 +7,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    [Header("Player Speeds")]
+    [Header("Player Speeds")] 
     public float verticalSpeed;
     [SerializeField] private float horizontalSpeed;
 
@@ -16,10 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float leftSideBorder;
     [SerializeField] private float rightSideBorder;
 
-    [Header("Player Rotate"), Space] 
+    [Header("Player Rotate"), Space]
     [SerializeField] private float rightLeftRotateAngle;
     [SerializeField] private float rightLeftRotateDuration;
-
 
 
     private Vector3 Pos
@@ -27,13 +25,11 @@ public class PlayerMovement : MonoBehaviour
         get => transform.position;
         set => transform.position = value;
     }
+
     private static Touch Touch => Input.GetTouch(0);
 
-    private void Update()
-    {
-        UpdateInit();
-    }
-    
+    private void Update() => UpdateInit();
+
     private void UpdateInit()
     {
         VerticalMovement();
@@ -41,20 +37,18 @@ public class PlayerMovement : MonoBehaviour
         BorderMovement();
     }
 
-    private void VerticalMovement()
-    {
-        transform.Translate(0,0, (verticalSpeed * Time.deltaTime));
-    }
+    private void VerticalMovement() =>
+        transform.Translate(0, 0, (verticalSpeed * Time.deltaTime));
 
     private void HorizontalMovement()
     {
         if (Input.touchCount <= 0) return;
-        
+
 
         if (Touch.phase == TouchPhase.Moved)
         {
             Pos = new Vector3(Pos.x + Touch.deltaPosition.x * (horizontalSpeed * Time.deltaTime), Pos.y, Pos.z);
-            
+
             transform.DORotate(
                 Touch.deltaPosition.x > 0
                     ? new Vector3(0, rightLeftRotateAngle, 0)
@@ -75,6 +69,4 @@ public class PlayerMovement : MonoBehaviour
         if (Pos.x > rightSideBorder)
             Pos = new Vector3(rightSideBorder, Pos.y, Pos.z);
     }
-
-
 }
