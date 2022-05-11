@@ -3845,6 +3845,14 @@ PrefabInstance:
       propertyPath: _tapToStart
       value: 
       objectReference: {fileID: 1373104204}
+    - target: {fileID: 3056102127481735688, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+      propertyPath: canHorizontal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056102127481735689, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 765579298}
     - target: {fileID: 3056102127481735689, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
       propertyPath: _tapToStart
       value: 

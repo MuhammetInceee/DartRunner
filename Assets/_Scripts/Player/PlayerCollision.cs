@@ -39,11 +39,21 @@ public class PlayerCollision : MonoBehaviour
     [Header("Audios"), Space]
     [SerializeField] private AudioSource balloonBurst;
 
+    [Header("Cameras"), Space] 
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Vector3 bonusCameraPos;
+    [SerializeField] private float cameraPosChangeDur;
+        
     // Properties
     private float PlayerVerticalSpeed
     {
         get => _playerMovement.verticalSpeed;
         set => _playerMovement.verticalSpeed = value;
+    }
+    private Vector3 Pos
+    {
+        get => transform.position;
+        set => transform.position = value;
     }
 
     private void Awake() => AwakeInit();
@@ -77,6 +87,9 @@ public class PlayerCollision : MonoBehaviour
                 break;
             case "Obstacle":
                 Obstacle(other);
+                break;
+            case "BonusEntry":
+                BonusEntry();
                 break;
         }
     }
@@ -156,19 +169,24 @@ public class PlayerCollision : MonoBehaviour
     {
         
     }
+
+    private void BonusEntry()
+    {
+        transform.DORotate(Vector3.zero, _playerMovement.rightLeftRotateDuration);
+        transform.DOMove(new Vector3(0, Pos.y, 66), 0.3f);
+        mainCamera.transform.DOMove(bonusCameraPos, cameraPosChangeDur);
+        _playerMovement.canHorizontal = false;
+    }
     
     private void TapToStart()
     {
-        if (_tapToStart.activeInHierarchy)
+        if (!_tapToStart.activeInHierarchy) return;
+        
+        _playerMovement.enabled = false;
+        if (Input.GetMouseButtonDown(0))
         {
-            _playerMovement.enabled = false;
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                _tapToStart.SetActive(false);
-                _playerMovement.enabled = true;
-            }
-                
+            _tapToStart.SetActive(false);
+            _playerMovement.enabled = true;
         }
     }
 }
