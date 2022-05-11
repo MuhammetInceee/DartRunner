@@ -17,7 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Rotate"), Space]
     [SerializeField] private float rightLeftRotateAngle;
-    [SerializeField] private float rightLeftRotateDuration;
+    public float rightLeftRotateDuration;
+
+    [Header("Booleans"), Space] 
+    public bool canHorizontal = true;
 
 
     private Vector3 Pos
@@ -34,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         VerticalMovement();
         HorizontalMovement();
-        BorderMovement();
+        MovementBorder();
     }
 
     private void VerticalMovement() =>
@@ -42,9 +45,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void HorizontalMovement()
     {
+        if(!canHorizontal) return;
         if (Input.touchCount <= 0) return;
-
-
+        
         if (Touch.phase == TouchPhase.Moved)
         {
             Pos = new Vector3(Pos.x + Touch.deltaPosition.x * (horizontalSpeed * Time.deltaTime), Pos.y, Pos.z);
@@ -61,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void BorderMovement()
+    private void MovementBorder()
     {
         if (Pos.x < leftSideBorder)
             Pos = new Vector3(leftSideBorder, Pos.y, Pos.z);

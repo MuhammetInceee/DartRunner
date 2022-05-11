@@ -9,6 +9,7 @@ TagManager:
   - BonusBalloon
   - FxTemporaire
   - Obstacle
+  - BonusEntry
   layers:
   - Default
   - TransparentFX
