@@ -6,10 +6,10 @@ namespace MuhammetInce.Helpers
 {
     public static class HelperUtils
     {
-        public static void RotateAround(GameObject obj, float durationSecond, int rotateSide)
+        public static void RotateAround(GameObject obj, float durationSecond, int rotateSide, int rotateAngle)
         {
             var eulerAngles = obj.transform.eulerAngles;
-            obj.transform.DORotate(new Vector3(eulerAngles.x, eulerAngles.y,  eulerAngles.z + 180 * rotateSide), durationSecond, RotateMode.FastBeyond360);
+            obj.transform.DORotate(new Vector3(eulerAngles.x, eulerAngles.y,  eulerAngles.z + rotateAngle * rotateSide), durationSecond, RotateMode.FastBeyond360);
         }
     }
 }

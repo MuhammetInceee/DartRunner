@@ -7,13 +7,18 @@ using DG.Tweening;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private bool _rotateSide;
+    #region Variables
+    
     private PlayerMovement _playerMovement;
 
     [Header("Floats")]
     [SerializeField] private float rotateAroundDuration;
     [SerializeField] private float destroyedBonusBalloon;
 
+    [Header("Booleans"),Space]
+    [SerializeField] private bool rotateSide;
+    [SerializeField] private bool streakRotate;
+    
     [Header("Player Speed"), Space]
     [SerializeField] private float increaseSpeedBoost;
     [SerializeField] private float decreaseSpeedBoost;
@@ -21,6 +26,7 @@ public class PlayerCollision : MonoBehaviour
 
     [Header("Material"), Space]
     [SerializeField] private Material playerChangeMat;
+    [SerializeField] private Texture rainbowTexture;
 
     [Header("Player Colors"), Space]
     [SerializeField] private Color defaultColor;
@@ -29,12 +35,21 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private Color greenColor;
     [SerializeField] private Color yellowColor;
 
-    [Header("Scores"), Space]
+    [Header("Integers"), Space]
     public int score;
+
+    [Header("Obstacle Elements"), Space]
+    [SerializeField] private int bounceBack;
+    [SerializeField] private float bounceBackDur;
+    
+    [Header("Streak Elements"), Space]
+    public int streakScore;
+    [SerializeField] private int streakNeededScore;
+    [SerializeField] private int streakLayer;
 
     [Header("Canvases"), Space]
     [SerializeField] private GameObject levelEndCanvas;
-    [SerializeField] private GameObject _tapToStart;
+    [SerializeField] private GameObject tapToStart;
 
     [Header("Audios"), Space]
     [SerializeField] private AudioSource balloonBurst;
@@ -43,8 +58,10 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Vector3 bonusCameraPos;
     [SerializeField] private float cameraPosChangeDur;
-        
-    // Properties
+    
+    #endregion
+
+    #region Properties
     private float PlayerVerticalSpeed
     {
         get => _playerMovement.verticalSpeed;
@@ -55,6 +72,8 @@ public class PlayerCollision : MonoBehaviour
         get => transform.position;
         set => transform.position = value;
     }
+    
+    #endregion
 
     private void Awake() => AwakeInit();
 
@@ -63,6 +82,7 @@ public class PlayerCollision : MonoBehaviour
     private void AwakeInit()
     {
         playerChangeMat.color = defaultColor;
+        playerChangeMat.mainTexture = null;
         if (_playerMovement != null) return;
         _playerMovement = gameObject.GetComponent<PlayerMovement>();
     }
@@ -70,6 +90,7 @@ public class PlayerCollision : MonoBehaviour
     private void UpdateInit()
     {
         TapToStart();
+        BalloonStreakCase();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -96,19 +117,11 @@ public class PlayerCollision : MonoBehaviour
 
     private void ColorChangeChecker(Collider other)
     {
-        if (_rotateSide)
-        {
-            HelperUtils.RotateAround(gameObject, rotateAroundDuration, 1);
-            _rotateSide = false;
-        }
-        else
-        {
-            HelperUtils.RotateAround(gameObject, rotateAroundDuration, -1);
-            _rotateSide = true;
-        }
+        var o = other.gameObject;
+        gameObject.layer = o.layer;
 
-        gameObject.layer = other.gameObject.layer;
         PlayerMatChanger();
+        DartRotator();
     }
 
     private void BalloonBurstChecker(Collider other)
@@ -117,19 +130,20 @@ public class PlayerCollision : MonoBehaviour
         var balloonHoloModel = other.gameObject.transform.GetChild(1).gameObject;
         var balloonEffect = other.gameObject.transform.GetChild(2).gameObject;
 
-        if (gameObject.layer == other.gameObject.layer)
+        if (gameObject.layer == other.gameObject.layer || gameObject.layer == streakLayer)
         {
             balloonEffect.SetActive(true);
             balloonModel.SetActive(false);
             balloonBurst.Play();
-
             score++;
             PlayerVerticalSpeed += increaseSpeedBoost;
+            streakScore++;
         }
         else
         {
             balloonModel.SetActive(false);
             balloonHoloModel.SetActive(true);
+            streakScore = 0;
         }
     }
 
@@ -167,26 +181,57 @@ public class PlayerCollision : MonoBehaviour
 
     private void Obstacle(Collider other)
     {
-        
+        _playerMovement.enabled = false;
+        transform.DOMove(new Vector3(Pos.x, Pos.y, Pos.z - bounceBack), bounceBackDur).
+            OnComplete(() => _playerMovement.enabled = true);
     }
 
     private void BonusEntry()
     {
         transform.DORotate(Vector3.zero, _playerMovement.rightLeftRotateDuration);
         transform.DOMove(new Vector3(0, Pos.y, 66), 0.3f);
-        mainCamera.transform.DOMove(bonusCameraPos, cameraPosChangeDur);
+        mainCamera.transform.DOMove(new Vector3(0,6,-13), cameraPosChangeDur);
+        mainCamera.transform.DORotate(new Vector3(15, 0, 0), cameraPosChangeDur);
         _playerMovement.canHorizontal = false;
     }
     
     private void TapToStart()
     {
-        if (!_tapToStart.activeInHierarchy) return;
+        if (!tapToStart.activeInHierarchy) return;
         
         _playerMovement.enabled = false;
         if (Input.GetMouseButtonDown(0))
         {
-            _tapToStart.SetActive(false);
+            tapToStart.SetActive(false);
             _playerMovement.enabled = true;
+        }
+    }
+
+    private void BalloonStreakCase()
+    {
+        var obj = gameObject;
+        if (streakScore < streakNeededScore) return;
+        if (!streakRotate)
+        {
+            HelperUtils.RotateAround(obj, rotateAroundDuration, 1, 359);
+            streakRotate = true;
+        }
+        obj.layer = streakLayer;
+        playerChangeMat.mainTexture = rainbowTexture;
+        playerChangeMat.color = Color.white;
+
+    }
+    private void DartRotator()
+    {
+        if (rotateSide)
+        {
+            HelperUtils.RotateAround(gameObject, rotateAroundDuration, 1, 180);
+            rotateSide = false;
+        }
+        else
+        {
+            HelperUtils.RotateAround(gameObject, rotateAroundDuration, -1, 180);
+            rotateSide = true;
         }
     }
 }
