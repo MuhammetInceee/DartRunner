@@ -4,20 +4,20 @@ using System.Runtime.Remoting.Messaging;
 using MuhammetInce.Helpers;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
     #region Variables
     
     private PlayerMovement _playerMovement;
+    private CameraController _cameraController;
+    private bool _rotateSide;
+    private bool _streakRotate;
 
     [Header("Floats")]
     [SerializeField] private float rotateAroundDuration;
     [SerializeField] private float destroyedBonusBalloon;
-
-    [Header("Booleans"),Space]
-    [SerializeField] private bool rotateSide;
-    [SerializeField] private bool streakRotate;
     
     [Header("Player Speed"), Space]
     [SerializeField] private float increaseSpeedBoost;
@@ -46,6 +46,7 @@ public class PlayerCollision : MonoBehaviour
     public int streakScore;
     [SerializeField] private int streakNeededScore;
     [SerializeField] private int streakLayer;
+    [SerializeField] private Text streakCounterText;
 
     [Header("Canvases"), Space]
     [SerializeField] private GameObject levelEndCanvas;
@@ -76,23 +77,22 @@ public class PlayerCollision : MonoBehaviour
     #endregion
 
     private void Awake() => AwakeInit();
-
     private void Update() => UpdateInit();
-
     private void AwakeInit()
     {
         playerChangeMat.color = defaultColor;
         playerChangeMat.mainTexture = null;
         if (_playerMovement != null) return;
         _playerMovement = gameObject.GetComponent<PlayerMovement>();
+        if(_cameraController != null) return;
+        _cameraController = mainCamera.GetComponent<CameraController>();
     }
-
     private void UpdateInit()
     {
+        streakCounterText.text = "+ " + streakScore;
         TapToStart();
         BalloonStreakCase();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -114,7 +114,6 @@ public class PlayerCollision : MonoBehaviour
                 break;
         }
     }
-
     private void ColorChangeChecker(Collider other)
     {
         var o = other.gameObject;
@@ -123,7 +122,6 @@ public class PlayerCollision : MonoBehaviour
         PlayerMatChanger();
         DartRotator();
     }
-
     private void BalloonBurstChecker(Collider other)
     {
         var balloonModel = other.gameObject.transform.GetChild(0).gameObject;
@@ -138,15 +136,25 @@ public class PlayerCollision : MonoBehaviour
             score++;
             PlayerVerticalSpeed += increaseSpeedBoost;
             streakScore++;
+
+            if (!streakCounterText.gameObject.activeInHierarchy)
+            {
+                streakCounterText.gameObject.SetActive(true);
+            }
+
+            if (streakScore < streakNeededScore) return;
+            if(streakCounterText.gameObject.activeInHierarchy)
+                streakCounterText.gameObject.SetActive(false);
+
         }
         else
         {
             balloonModel.SetActive(false);
             balloonHoloModel.SetActive(true);
             streakScore = 0;
+            streakCounterText.gameObject.SetActive(false);
         }
     }
-
     private void PlayerMatChanger()
     {
         playerChangeMat.color = gameObject.layer switch
@@ -158,7 +166,6 @@ public class PlayerCollision : MonoBehaviour
             _ => playerChangeMat.color
         };
     }
-
     private void BonusBalloon(Collider other)
     {
         PlayerVerticalSpeed -= decreaseSpeedBoost;
@@ -178,23 +185,23 @@ public class PlayerCollision : MonoBehaviour
         
         destroyedBonusBalloon++;
     }
-
     private void Obstacle(Collider other)
     {
         _playerMovement.enabled = false;
         transform.DOMove(new Vector3(Pos.x, Pos.y, Pos.z - bounceBack), bounceBackDur).
             OnComplete(() => _playerMovement.enabled = true);
     }
-
     private void BonusEntry()
     {
         transform.DORotate(Vector3.zero, _playerMovement.rightLeftRotateDuration);
         transform.DOMove(new Vector3(0, Pos.y, 66), 0.3f);
-        mainCamera.transform.DOMove(new Vector3(0,6,-13), cameraPosChangeDur);
+        mainCamera.transform.parent = gameObject.transform;
+        _cameraController.enabled = false;
+        mainCamera.transform.DOLocalMove(new Vector3(0,6,-13), cameraPosChangeDur);
         mainCamera.transform.DORotate(new Vector3(15, 0, 0), cameraPosChangeDur);
         _playerMovement.canHorizontal = false;
+        streakCounterText.gameObject.SetActive(false);
     }
-    
     private void TapToStart()
     {
         if (!tapToStart.activeInHierarchy) return;
@@ -206,15 +213,14 @@ public class PlayerCollision : MonoBehaviour
             _playerMovement.enabled = true;
         }
     }
-
     private void BalloonStreakCase()
     {
         var obj = gameObject;
         if (streakScore < streakNeededScore) return;
-        if (!streakRotate)
+        if (!_streakRotate)
         {
             HelperUtils.RotateAround(obj, rotateAroundDuration, 1, 359);
-            streakRotate = true;
+            _streakRotate = true;
         }
         obj.layer = streakLayer;
         playerChangeMat.mainTexture = rainbowTexture;
@@ -223,15 +229,15 @@ public class PlayerCollision : MonoBehaviour
     }
     private void DartRotator()
     {
-        if (rotateSide)
+        if (_rotateSide)
         {
             HelperUtils.RotateAround(gameObject, rotateAroundDuration, 1, 180);
-            rotateSide = false;
+            _rotateSide = false;
         }
         else
         {
             HelperUtils.RotateAround(gameObject, rotateAroundDuration, -1, 180);
-            rotateSide = true;
+            _rotateSide = true;
         }
     }
 }
