@@ -3918,6 +3918,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1542691532}
     - target: {fileID: 3056102127481735689, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+<<<<<<< Updated upstream
       propertyPath: rainbowTexture
       value: 
       objectReference: {fileID: 2800000, guid: 1aa73b59052e90b4f9725350e6f69ff8, type: 3}
@@ -3940,6 +3941,22 @@ PrefabInstance:
     - target: {fileID: 3056102127481735689, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
       propertyPath: cameraPosChangeDur
       value: 1
+=======
+      propertyPath: bonusCameraPos.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056102127481735689, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+      propertyPath: bonusCameraPos.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056102127481735689, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+      propertyPath: bonusCameraPos.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056102127481735689, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+      propertyPath: cameraPosChangeDur
+      value: 2
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 3306712828107871881, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
       propertyPath: m_RootOrder
