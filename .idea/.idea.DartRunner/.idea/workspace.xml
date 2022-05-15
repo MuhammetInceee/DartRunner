@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf3857a7-0213-47ca-8802-ad4b4e796a0d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/ControlScripts/ControlFromTagAndLayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/ControlScripts/ControlFromTagAndLayer.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DartRunner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DartRunner/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Prefabs/-----Canvases-----.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Prefabs/-----Canvases-----.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PackageAsset/JMO Assets/Toony Colors Pro/Demo TCP2/Cat Demo URP.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Prefabs/Gates/Blue_Gate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Prefabs/Gates/Blue_Gate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Level2.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerCollision.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="rider.run.widget.enabled.cache" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="CSharpTypeNameHintsOptions" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -80,6 +84,8 @@
       <workItem from="1652354688735" duration="5655000" />
       <workItem from="1652365782300" duration="2866000" />
       <workItem from="1652420812528" duration="1150000" />
+      <workItem from="1652615748384" duration="3212000" />
+      <workItem from="1652630220012" duration="1586000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,3 @@
-using System;
-using System.Data.SqlClient;
-using System.Runtime.Remoting.Messaging;
 using MuhammetInce.Helpers;
 using UnityEngine;
 using DG.Tweening;
@@ -57,7 +54,6 @@ public class PlayerCollision : MonoBehaviour
 
     [Header("Cameras"), Space] 
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private Vector3 bonusCameraPos;
     [SerializeField] private float cameraPosChangeDur;
     
     #endregion
@@ -68,12 +64,8 @@ public class PlayerCollision : MonoBehaviour
         get => _playerMovement.verticalSpeed;
         set => _playerMovement.verticalSpeed = value;
     }
-    private Vector3 Pos
-    {
-        get => transform.position;
-        set => transform.position = value;
-    }
-    
+    private Vector3 Pos => transform.position;
+
     #endregion
 
     private void Awake() => AwakeInit();
@@ -107,7 +99,7 @@ public class PlayerCollision : MonoBehaviour
                 BonusBalloon(other);
                 break;
             case "Obstacle":
-                Obstacle(other);
+                Obstacle();
                 break;
             case "BonusEntry":
                 BonusEntry();
@@ -185,7 +177,7 @@ public class PlayerCollision : MonoBehaviour
         
         destroyedBonusBalloon++;
     }
-    private void Obstacle(Collider other)
+    private void Obstacle()
     {
         _playerMovement.enabled = false;
         transform.DOMove(new Vector3(Pos.x, Pos.y, Pos.z - bounceBack), bounceBackDur).
@@ -194,7 +186,7 @@ public class PlayerCollision : MonoBehaviour
     private void BonusEntry()
     {
         transform.DORotate(Vector3.zero, _playerMovement.rightLeftRotateDuration);
-        transform.DOMove(new Vector3(0, Pos.y, 66), 0.3f);
+        transform.DOMove(new Vector3(0, Pos.y, Pos.z + 1), 0.3f);
         mainCamera.transform.parent = gameObject.transform;
         _cameraController.enabled = false;
         mainCamera.transform.DOLocalMove(new Vector3(0,6,-13), cameraPosChangeDur);
