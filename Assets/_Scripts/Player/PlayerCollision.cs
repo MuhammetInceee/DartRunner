@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using MuhammetInce.Helpers;
 using UnityEngine;
 using DG.Tweening;
@@ -57,6 +59,9 @@ public class PlayerCollision : MonoBehaviour
     [Header("Cameras"), Space]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float cameraPosChangeDur;
+
+    [Header("Balloon Burst Elements"), Space] 
+    [SerializeField] private GameObject plusOneCanvas;
 
     #endregion
 
@@ -128,6 +133,9 @@ public class PlayerCollision : MonoBehaviour
         if (gameObject.layer == other.gameObject.layer || gameObject.layer == streakLayer)
         {
             _barFill += FiberBarFillAmount;
+            var position = other.transform.position;
+            Instantiate(plusOneCanvas,
+                new Vector3(position.x, position.y + 1, position.z), Quaternion.identity);
             balloonEffect.SetActive(true);
             balloonModel.SetActive(false);
             balloonBurst.Play();
@@ -215,7 +223,7 @@ public class PlayerCollision : MonoBehaviour
         obj.layer = streakLayer;
         playerChangeMat.mainTexture = rainbowTexture;
         playerChangeMat.color = Color.white;
-        fiberEffect.SetActive(true);
+        //fiberEffect.SetActive(true);
 
     }
     private void DartRotator()
@@ -231,4 +239,5 @@ public class PlayerCollision : MonoBehaviour
             _rotateSide = true;
         }
     }
+    
 }
