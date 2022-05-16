@@ -713,6 +713,30 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 919132148129979470}
+    - target: {fileID: 499009108847685799, guid: c47374c42546f4641b5df5b043297345, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499009108994220350, guid: c47374c42546f4641b5df5b043297345, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499009109370052132, guid: c47374c42546f4641b5df5b043297345, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499009110062476931, guid: c47374c42546f4641b5df5b043297345, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 499009110062476931, guid: c47374c42546f4641b5df5b043297345, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 499009110062476931, guid: c47374c42546f4641b5df5b043297345, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 499009110631061319, guid: c47374c42546f4641b5df5b043297345, type: 3}
       propertyPath: playerTransform
       value: 

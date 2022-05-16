@@ -151,6 +151,7 @@ public class PlayerCollision : MonoBehaviour
             balloonModel.SetActive(false);
             balloonHoloModel.SetActive(true);
             streakScore = 0;
+            _barFill = 0;
         }
     }
     private void PlayerMatChanger()
