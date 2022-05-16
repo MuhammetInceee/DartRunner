@@ -195,6 +195,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (!tapToStart.activeInHierarchy) return;
         
+        
         _playerMovement.enabled = false;
         if (Input.GetMouseButtonDown(0))
         {
