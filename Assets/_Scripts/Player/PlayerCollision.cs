@@ -11,6 +11,7 @@ public class PlayerCollision : MonoBehaviour
     private CameraController _cameraController;
     private bool _rotateSide;
     private bool _streakRotate;
+    private float _barFill;
 
     [Header("Floats")]
     [SerializeField] private float rotateAroundDuration;
@@ -41,9 +42,10 @@ public class PlayerCollision : MonoBehaviour
     
     [Header("Streak Elements"), Space]
     public int streakScore;
-    [SerializeField] private int streakNeededScore;
+    [SerializeField] private float streakNeededScore;
     [SerializeField] private int streakLayer;
-    [SerializeField] private Text streakCounterText;
+    [SerializeField] private Image streakBarFillImage;
+    [SerializeField] private GameObject fiberEffect;
 
     [Header("Canvases"), Space]
     [SerializeField] private GameObject levelEndCanvas;
@@ -52,10 +54,10 @@ public class PlayerCollision : MonoBehaviour
     [Header("Audios"), Space]
     [SerializeField] private AudioSource balloonBurst;
 
-    [Header("Cameras"), Space] 
+    [Header("Cameras"), Space]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float cameraPosChangeDur;
-    
+
     #endregion
 
     #region Properties
@@ -65,6 +67,8 @@ public class PlayerCollision : MonoBehaviour
         set => _playerMovement.verticalSpeed = value;
     }
     private Vector3 Pos => transform.position;
+
+    private float FiberBarFillAmount => streakNeededScore / 100;
 
     #endregion
 
@@ -81,7 +85,8 @@ public class PlayerCollision : MonoBehaviour
     }
     private void UpdateInit()
     {
-        streakCounterText.text = "+ " + streakScore;
+        streakBarFillImage.fillAmount = 
+            Mathf.Lerp(streakBarFillImage.fillAmount, _barFill, 5 * Time.deltaTime);
         TapToStart();
         BalloonStreakCase();
     }
@@ -122,21 +127,15 @@ public class PlayerCollision : MonoBehaviour
 
         if (gameObject.layer == other.gameObject.layer || gameObject.layer == streakLayer)
         {
+            _barFill += FiberBarFillAmount;
             balloonEffect.SetActive(true);
             balloonModel.SetActive(false);
             balloonBurst.Play();
             score++;
             PlayerVerticalSpeed += increaseSpeedBoost;
             streakScore++;
-
-            if (!streakCounterText.gameObject.activeInHierarchy)
-            {
-                streakCounterText.gameObject.SetActive(true);
-            }
-
+            
             if (streakScore < streakNeededScore) return;
-            if(streakCounterText.gameObject.activeInHierarchy)
-                streakCounterText.gameObject.SetActive(false);
 
         }
         else
@@ -144,7 +143,6 @@ public class PlayerCollision : MonoBehaviour
             balloonModel.SetActive(false);
             balloonHoloModel.SetActive(true);
             streakScore = 0;
-            streakCounterText.gameObject.SetActive(false);
         }
     }
     private void PlayerMatChanger()
@@ -192,7 +190,6 @@ public class PlayerCollision : MonoBehaviour
         mainCamera.transform.DOLocalMove(new Vector3(0,6,-13), cameraPosChangeDur);
         mainCamera.transform.DORotate(new Vector3(15, 0, 0), cameraPosChangeDur);
         _playerMovement.canHorizontal = false;
-        streakCounterText.gameObject.SetActive(false);
     }
     private void TapToStart()
     {
@@ -208,7 +205,7 @@ public class PlayerCollision : MonoBehaviour
     private void BalloonStreakCase()
     {
         var obj = gameObject;
-        if (streakScore < streakNeededScore) return;
+        if (streakBarFillImage.fillAmount < 1) return;
         if (!_streakRotate)
         {
             HelperUtils.RotateAround(obj, rotateAroundDuration, 1, 359);
@@ -217,6 +214,7 @@ public class PlayerCollision : MonoBehaviour
         obj.layer = streakLayer;
         playerChangeMat.mainTexture = rainbowTexture;
         playerChangeMat.color = Color.white;
+        fiberEffect.SetActive(true);
 
     }
     private void DartRotator()
