@@ -224,7 +224,7 @@ public class PlayerCollision : MonoBehaviour
         obj.layer = streakLayer;
         playerChangeMat.mainTexture = rainbowTexture;
         playerChangeMat.color = Color.white;
-        //fiberEffect.SetActive(true);
+        fiberEffect.SetActive(true);
 
     }
     private void DartRotator()
