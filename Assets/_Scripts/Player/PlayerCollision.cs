@@ -11,6 +11,7 @@ public class PlayerCollision : MonoBehaviour
     
     private PlayerMovement _playerMovement;
     private CameraController _cameraController;
+    private readonly int _isFiber = Animator.StringToHash("isFiber");
     private bool _rotateSide;
     private bool _streakRotate;
     private float _barFill;
@@ -63,6 +64,10 @@ public class PlayerCollision : MonoBehaviour
     [Header("Balloon Burst Elements"), Space] 
     [SerializeField] private GameObject plusOneCanvas;
 
+    [Header("Animations"), Space] 
+    [SerializeField] private Animator fiberAnim;
+
+    
     #endregion
 
     #region Properties
@@ -179,7 +184,7 @@ public class PlayerCollision : MonoBehaviour
         if (PlayerVerticalSpeed <= minVerSpeed)
         {
             _playerMovement.enabled = false;
-            levelEndCanvas.SetActive(true);
+            StartCoroutine(LevelEndCanvasWaiter(0.7f));
         }
         
         destroyedBonusBalloon++;
@@ -218,7 +223,7 @@ public class PlayerCollision : MonoBehaviour
         if (streakBarFillImage.fillAmount < 1) return;
         if (!_streakRotate)
         {
-            HelperUtils.RotateAround(obj, rotateAroundDuration, 1, 359);
+            fiberAnim.SetBool(_isFiber, true);
             _streakRotate = true;
         }
         obj.layer = streakLayer;
@@ -240,5 +245,11 @@ public class PlayerCollision : MonoBehaviour
             _rotateSide = true;
         }
     }
-    
+
+    private IEnumerator LevelEndCanvasWaiter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        levelEndCanvas.SetActive(true);
+    }
+
 }

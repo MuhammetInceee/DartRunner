@@ -5,8 +5,6 @@ public class LevelProgressBar : MonoBehaviour
 {
     [Header("UI references :")] 
     [SerializeField] private Image uiFillImage;
-    [SerializeField] private Text uiStartText;
-    [SerializeField] private Text uiEndText;
 
     [Header("Player & Endline references :")] 
     [SerializeField] private Transform playerTransform;
@@ -24,18 +22,8 @@ public class LevelProgressBar : MonoBehaviour
         _fullDistance = GetDistance();
     }
 
-    public void SetLevelTexts(int level)
-    {
-        uiStartText.text = level.ToString();
-        uiEndText.text = (level + 1).ToString();
-    }
-
     private float GetDistance()
     {
-        // Slow
-        //return Vector3.Distance (playerTransform.position, endLinePosition) ;
-
-        // Fast
         return (_endLinePosition - playerTransform.position).sqrMagnitude;
     }
 
