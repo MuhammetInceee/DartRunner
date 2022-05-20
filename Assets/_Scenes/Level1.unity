@@ -2093,6 +2093,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292206558}
     m_Modifications:
+    - target: {fileID: 851521946, guid: 14359931d793e66429d87efcde6bf3db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 69.01
+      objectReference: {fileID: 0}
     - target: {fileID: 5647957645855868956, guid: 14359931d793e66429d87efcde6bf3db, type: 3}
       propertyPath: m_Name
       value: ---BonusPlatform--- (1)
@@ -3288,6 +3292,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3306712828107871881, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480402748732124290, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7419793533701592748, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
