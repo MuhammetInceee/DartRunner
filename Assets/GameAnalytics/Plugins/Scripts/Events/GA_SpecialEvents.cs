@@ -3,8 +3,10 @@
 /// until data has been sent.
 /// </summary>
 
+using System;
 using UnityEngine;
 using System.Collections;
+using GameAnalyticsSDK;
 
 namespace GameAnalyticsSDK.Events
 {
@@ -38,8 +40,14 @@ namespace GameAnalyticsSDK.Events
 
         #region unity derived methods
 
+        public void Awake()
+        {
+            GameAnalytics.Initialize();
+        }
+
         public void Start ()
         {
+            DontDestroyOnLoad(gameObject);
             StartCoroutine(SubmitFPSRoutine());
             StartCoroutine(CheckCriticalFPSRoutine());
         }
