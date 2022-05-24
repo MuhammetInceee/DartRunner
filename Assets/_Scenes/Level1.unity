@@ -868,6 +868,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 919132148129979470}
+  _distance: {x: 0, y: 0, z: 0}
+  readyToChange: 0
 --- !u!1001 &796715409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3312,7 +3314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7419793533701592748, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}

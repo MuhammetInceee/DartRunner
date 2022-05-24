@@ -47,17 +47,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!canHorizontal) return;
         if (Input.touchCount <= 0) return;
-        
+
         if (Touch.phase == TouchPhase.Moved)
         {
             Pos = new Vector3(Pos.x + Touch.deltaPosition.x * (horizontalSpeed * Time.deltaTime), Pos.y, Pos.z);
-
+        
             transform.DORotate(
                 Touch.deltaPosition.x > 0
                     ? new Vector3(0, rightLeftRotateAngle, 0)
                     : new Vector3(0, -rightLeftRotateAngle, 0), rightLeftRotateDuration);
         }
-
+        
         if (Touch.phase == TouchPhase.Ended)
         {
             transform.DORotate(Vector3.zero, rightLeftRotateDuration);
@@ -72,4 +72,6 @@ public class PlayerMovement : MonoBehaviour
         if (Pos.x > rightSideBorder)
             Pos = new Vector3(rightSideBorder, Pos.y, Pos.z);
     }
+    
+    
 }
