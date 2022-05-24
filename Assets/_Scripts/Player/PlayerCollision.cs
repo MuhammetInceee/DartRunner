@@ -14,6 +14,7 @@ public class PlayerCollision : MonoBehaviour
     private readonly int _isFiber = Animator.StringToHash("isFiber");
     private bool _rotateSide;
     private bool _streakRotate;
+    private bool _isChangeFiber;
     private float _barFill;
 
     [Header("Floats")]
@@ -38,6 +39,7 @@ public class PlayerCollision : MonoBehaviour
 
     [Header("Integers"), Space]
     public int score;
+    [SerializeField] private float increaseFiberSpeed;
 
     [Header("Obstacle Elements"), Space]
     [SerializeField] private int bounceBack;
@@ -49,6 +51,7 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private int streakLayer;
     [SerializeField] private Image streakBarFillImage;
     [SerializeField] private GameObject fiberEffect;
+    [SerializeField] private GameObject fiberEffect2;
 
     [Header("Canvases"), Space]
     [SerializeField] private GameObject levelEndCanvas;
@@ -59,6 +62,8 @@ public class PlayerCollision : MonoBehaviour
 
     [Header("Cameras"), Space]
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private Vector3 fiberCameraPos;
+    [SerializeField] private Vector3 fiberCameraRot;
     [SerializeField] private float cameraPosChangeDur;
 
     [Header("Balloon Burst Elements"), Space] 
@@ -229,7 +234,15 @@ public class PlayerCollision : MonoBehaviour
         obj.layer = streakLayer;
         playerChangeMat.mainTexture = rainbowTexture;
         playerChangeMat.color = Color.white;
+        if (!_isChangeFiber)
+        {
+            _playerMovement.verticalSpeed += increaseFiberSpeed;
+            _cameraController._distance.z = Mathf.Lerp(_cameraController._distance.z, _cameraController._distance.z - 4, 100f);
+            _cameraController.readyToChange = true;
+            _isChangeFiber = true;
+        }
         fiberEffect.SetActive(true);
+        fiberEffect2.SetActive(true);
 
     }
     private void DartRotator()

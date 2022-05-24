@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private GameObject target;
-    private Vector3 _distance;
-    
+    public Vector3 _distance;
+    public bool readyToChange;    
     private Vector3 Pos
     {
         get => transform.position;
@@ -24,5 +24,13 @@ public class CameraController : MonoBehaviour
     private void LateUpdate()
     {
         Pos = new Vector3((TargetPos.x + _distance.x), Pos.y, (TargetPos.z + _distance.z));
+
+        if (readyToChange)
+        {
+            CameraHigher();
+            readyToChange = false;
+        }
     }
+
+    private void CameraHigher() => Pos = Pos + new Vector3(0, 2, 0);
 }

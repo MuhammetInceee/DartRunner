@@ -3223,6 +3223,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3056102127481735688, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+      propertyPath: verticalSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056102127481735688, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+      propertyPath: horizontalSpeed
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056102127481735688, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
       propertyPath: rightLeftRotateAngle
       value: 4
       objectReference: {fileID: 0}
@@ -3238,6 +3246,10 @@ PrefabInstance:
       propertyPath: tapToStart
       value: 
       objectReference: {fileID: 1373104204}
+    - target: {fileID: 3056102127481735689, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
+      propertyPath: minVerSpeed
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3056102127481735689, guid: 220e3c2e95160fe488bb1efcf9e6520e, type: 3}
       propertyPath: balloonBurst
       value: 
